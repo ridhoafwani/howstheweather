@@ -5,7 +5,15 @@ import './App.css';
 function App() {
   return (
     <div className="App">
-      <Header/>
+      <Header
+        defaultCity="Mataram"
+        unitC={{
+          color: `#fcfeff`,
+          backgroundColor: `#465866`,
+          borderRadius: `50%`,
+          cursor: `default`,
+        }}
+      />
     </div>
   );
 }
