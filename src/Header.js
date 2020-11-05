@@ -8,6 +8,7 @@ import axios from "axios";
 import Hallo from "./Hallo";
 import City from "./City";
 import Current from "./Current";
+import HourlyForecast from "./HourlyForecast";
 import ForecastPreview from "./ForecastPreview";
 
 import "./Header.css";
@@ -15,6 +16,7 @@ import "./Header.css";
 const Header = (props) => {
   const [city, setCity] = useState(props.defaultCity);
   const [weather, setWeather] = useState({});
+  const [hourly, setHourly] = useState({});
   const [day, setDay] = useState(null);
   const [hour, setHour] = useState({});
   const [forecast, setForecast] = useState({});
@@ -62,6 +64,11 @@ const Header = (props) => {
       .then(() => setReady(true));
   }
 
+  function showHourly(response){
+    setHourly(response.data);
+
+  }
+
   function showWeather(response) {
     setWeather({
       ready: true,
@@ -74,10 +81,20 @@ const Header = (props) => {
       latitude: response.data.coord.lat,
       longitude: response.data.coord.lon,
     });
-
-
     let latitude = response.data.coord.lat;
     let longitude = response.data.coord.lon;
+    let apiKeyHourly = `903ef20e2768a7e266ca3802f5b7359a`;
+    let hourlyUrl = 'https://api.openweathermap.org/data/2.5/onecall';
+
+    //proses nambah hourly
+    axios
+      .get(
+        `${hourlyUrl}?lat=${latitude}&lon=${longitude}&exclude=current,minutely,daily&appid=${apiKeyHourly}&units=metric`
+      )
+      .then(showHourly);
+    
+    //ini buat daily
+
     let apiKeyWeather = `903ef20e2768a7e266ca3802f5b7359a`;
     let weatherForecastUrl = `https://api.openweathermap.org/data/2.5/onecall`;
     axios
@@ -86,6 +103,7 @@ const Header = (props) => {
       )
       .then(showForecast);
     hideVirtualKeyboard();
+    
   }
 
   function search() {
@@ -191,6 +209,23 @@ const Header = (props) => {
             />
           )}
         />
+        {//Hourly disini
+        }
+        <div className="forecast-flax-wrapper forecast-scroll">
+          <Route
+            path="/forecast"
+            exact
+            render={(props) => (
+              <HourlyForecast
+              {...props}
+              temp={hourly.hourly[0].temp}
+              icon={hourly.hourly[0].weather[0].icon}
+              unit={fahrenheit}
+              />
+            )}
+          />
+        </div>
+
         <div className="forecast-flax-wrapper forecast-scroll">
           <Route
             path="/forecast"
