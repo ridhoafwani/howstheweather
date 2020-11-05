@@ -1,3 +1,12 @@
+.forecast-flax-wrapper-white-box-for-all {
+  justify-content: center;
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  background: linear-gradient(180deg, transparent, hsla(0, 0%, 100%, 0.824));
+}
+
+
 .forecast-flax-wrapper {
     justify-content: center;
     display: flex;
