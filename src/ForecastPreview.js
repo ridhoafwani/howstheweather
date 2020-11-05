@@ -61,25 +61,23 @@ export default function ForecastPreview(props) {
     newColor = { backgroundColor: `#022f53ff` };
   }
 
-  return null;
-
-  // return (
-  //   <div className="forecast">
-  //     <div className="small-circle" style={newColor}>
-  //       <span className="gradient-overlay-small">
-  //         <img
-  //           src={require(`./asset/${props.icon}.png`)}
-  //           alt=""
-  //           className="condition-icon-small"
-  //         />
-  //       </span>
-  //     </div>
-  //     <p className="day-future">{newDay}</p>
-  //     <p className="temp-future">
-  //       <span className="unit">{unitFahrenheitMax}</span> |{" "}
-  //       <span className="future-low-temp" />
-  //       <span className="future-low-temp unit">{unitFahrenheitMin}</span>
-  //     </p>
-  //   </div>
-  // );
+  return (
+    <div className="forecast">
+      <div className="small-circle" style={newColor}>
+        <span className="gradient-overlay-small">
+          <img
+            src={require(`./asset/${props.icon}.png`)}
+            alt=""
+            className="condition-icon-small"
+          />
+        </span>
+      </div>
+      <p className="day-future">{newDay}</p>
+      <p className="temp-future">
+        <span className="unit">{unitFahrenheitMax}</span> |{" "}
+        <span className="future-low-temp" />
+        <span className="future-low-temp unit">{unitFahrenheitMin}</span>
+      </p>
+    </div>
+  );
 }
