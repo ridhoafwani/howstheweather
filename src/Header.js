@@ -246,13 +246,84 @@ const Header = (props) => {
             render={(props) => (
               <HourlyForecast
               {...props}
-              temp={hourly.hourly[2].temp}
-              icon={hourly.hourly[2].weather[0].icon}
+              temp={hourly.hourly[3].temp}
+              icon={hourly.hourly[3].weather[0].icon}
               unit={fahrenheit}
-              hour={hourlyHour.hourlyset + 2}
+              hour={hourlyHour.hourlyset + 3}
               />
             )}
           />
+
+          <Route
+            path="/forecast"
+            exact
+            render={(props) => (
+              <HourlyForecast
+              {...props}
+              temp={hourly.hourly[6].temp}
+              icon={hourly.hourly[6].weather[0].icon}
+              unit={fahrenheit}
+              hour={hourlyHour.hourlyset + 6}
+              />
+            )}
+          />
+
+          <Route
+            path="/forecast"
+            exact
+            render={(props) => (
+              <HourlyForecast
+              {...props}
+              temp={hourly.hourly[9].temp}
+              icon={hourly.hourly[9].weather[0].icon}
+              unit={fahrenheit}
+              hour={hourlyHour.hourlyset + 9}
+              />
+            )}
+          />
+
+          <Route
+            path="/forecast"
+            exact
+            render={(props) => (
+              <HourlyForecast
+              {...props}
+              temp={hourly.hourly[12].temp}
+              icon={hourly.hourly[12].weather[0].icon}
+              unit={fahrenheit}
+              hour={hourlyHour.hourlyset + 12}
+              />
+            )}
+          />    
+
+          <Route
+            path="/forecast"
+            exact
+            render={(props) => (
+              <HourlyForecast
+              {...props}
+              temp={hourly.hourly[15].temp}
+              icon={hourly.hourly[15].weather[0].icon}
+              unit={fahrenheit}
+              hour={hourlyHour.hourlyset + 15}
+              />
+            )}
+          />
+
+          <Route
+            path="/forecast"
+            exact
+            render={(props) => (
+              <HourlyForecast
+              {...props}
+              temp={hourly.hourly[18].temp}
+              icon={hourly.hourly[18].weather[0].icon}
+              unit={fahrenheit}
+              hour={hourlyHour.hourlyset + 18}
+              />
+            )}
+          />
+
         </div>
 
         <div className="forecast-flax-wrapper forecast-scroll">
