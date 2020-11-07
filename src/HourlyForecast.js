@@ -39,6 +39,25 @@ export default function HourlyForecast(props) {
     } else {
         newColor = { backgroundColor: `#022f53ff` };
     }
+
+    let totalHour = props.hour;
+
+    if (totalHour >= 24) {
+        totalHour -= 24;
+        totalHour = `${totalHour}:00`;
+      } else if (totalHour < 0) {
+        totalHour += 24;
+        totalHour = `${totalHour}:00`;
+      } else if (totalHour === 0) {
+        totalHour = `00:00`;
+      } else if (totalHour < 10) {
+        totalHour = `0${totalHour}:00`;
+      } else if (totalHour === "now"){
+        
+      }
+      else{
+        totalHour = `${totalHour}:00`
+      }
   
     return (
         <div className="forecast">
@@ -51,7 +70,7 @@ export default function HourlyForecast(props) {
               />
             </span>
           </div>
-          <p className="day-future">Now</p>
+        <p className="day-future">{totalHour}</p>
           <p className="temp-future">
             <span className="unit">{unitFahrenheit}</span>
           </p>

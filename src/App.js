@@ -1,6 +1,6 @@
-import React from 'react';
+import React from "react";
 import Header from "./Header";
-import './App.css';
+import "./App.css";
 
 function App() {
   return (
@@ -13,7 +13,7 @@ function App() {
           borderRadius: `50%`,
           cursor: `default`,
         }}
-      />
+      />{" "}
     </div>
   );
 }

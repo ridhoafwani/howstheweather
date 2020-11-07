@@ -19,6 +19,7 @@ const Header = (props) => {
   const [hourly, setHourly] = useState({});
   const [day, setDay] = useState(null);
   const [hour, setHour] = useState({});
+  const [hourlyHour, setHourlyHour] = useState({});
   const [forecast, setForecast] = useState({});
   const [fahrenheit, setFahrenheit] = useState(false);
   const [fSelected, setFSelected] = useState({});
@@ -33,6 +34,7 @@ const Header = (props) => {
     let inte = parseInt(hours);
     let offset = parseInt(response.data.utc_offset);
     let totalHour = inte + offset;
+    let jam = totalHour;
     if (totalHour >= 24) {
       totalHour -= 24;
     } else if (totalHour < 0) {
@@ -42,9 +44,21 @@ const Header = (props) => {
     } else if (totalHour < 10) {
       totalHour = `0${totalHour}`;
     } else totalHour = inte + offset;
+
     setHour({
       ready: true,
       hourSet: totalHour,
+    });
+
+    if (jam >= 24) {
+      jam -= 24;
+    } else if (jam < 0) {
+      jam += 24;
+    }
+
+    setHourlyHour({
+      hourlyset: jam,
+      ready: true
     });
   }
 
@@ -66,7 +80,7 @@ const Header = (props) => {
 
   function showHourly(response){
     setHourly(response.data);
-
+    
   }
 
   function showWeather(response) {
@@ -221,6 +235,21 @@ const Header = (props) => {
               temp={hourly.hourly[0].temp}
               icon={hourly.hourly[0].weather[0].icon}
               unit={fahrenheit}
+              hour={"now"}
+              />
+            )}
+          />
+
+          <Route
+            path="/forecast"
+            exact
+            render={(props) => (
+              <HourlyForecast
+              {...props}
+              temp={hourly.hourly[2].temp}
+              icon={hourly.hourly[2].weather[0].icon}
+              unit={fahrenheit}
+              hour={hourlyHour.hourlyset + 2}
               />
             )}
           />

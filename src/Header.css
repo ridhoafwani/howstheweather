@@ -25,6 +25,7 @@ a:hover {
   color: #465866;
   text-decoration: none;
 }
+
 .text-input {
   max-width: 700px;
   width: 500px;
@@ -62,6 +63,7 @@ button {
   border: none;
   cursor: pointer;
 }
+
 button:active,
 button:focus {
   outline: none;
@@ -104,6 +106,7 @@ button:focus {
   .page-name {
     font-size: 1.5rem;
   }
+
   a {
     font-size: 1.5rem;
   }
@@ -113,9 +116,11 @@ button:focus {
     height: 50px;
     padding-left: 25px;
   }
+
   button {
     left: 88%;
   }
+
   .conversion-f,
   .conversion-c {
     font-size: 1rem;
@@ -123,6 +128,7 @@ button:focus {
     width: 35px;
     line-height: 35px;
   }
+
   .conversion-c {
     right: 70px;
   }
@@ -139,12 +145,14 @@ button:focus {
     margin-top: 15px;
     margin-bottom: 15px;
   }
+
   .page-name-welcome-xs {
     width: 100%;
     left: 0;
     margin: 0;
     text-align: center;
   }
+
   .conversion-f,
   .conversion-c {
     font-size: 1rem;
@@ -152,20 +160,24 @@ button:focus {
     width: 30px;
     line-height: 30px;
   }
+
   .conversion-c {
     right: 55px;
   }
+
   .text-input {
     margin: 0 auto;
     display: block;
     height: 45px;
     width: 325px;
   }
+
   button {
     top: 41px;
     width: 40px;
     left: 87%;
   }
+
   ::placeholder {
     font-size: 1rem;
   }

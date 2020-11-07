@@ -13,7 +13,7 @@ const Current = (props) => {
     unitFahrenheit = `${Math.round(props.temperature)}°C`;
   }
 
-  document.body.style.backgroundImage= `url('./background/${props.icon}.jpg')`;
+  document.body.style.backgroundImage = `url('./background/${props.icon}.jpg')`;
 
   let newColor = currentTemp;
   if (newColor >= 44) {
