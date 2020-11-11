@@ -10,7 +10,7 @@ import City from "./City";
 import Current from "./Current";
 import HourlyForecast from "./HourlyForecast";
 import ForecastPreview from "./ForecastPreview";
-
+import Citynotfound from "./Citynotfound";
 import "./Header.css";
 
 const Header = (props) => {
@@ -83,6 +83,7 @@ const Header = (props) => {
   }
 
   function showWeather(response) {
+    history.push("/forecast");
     setWeather({
       ready: true,
       city: response.data.name,
@@ -94,6 +95,7 @@ const Header = (props) => {
       latitude: response.data.coord.lat,
       longitude: response.data.coord.lon,
     });
+
     let latitude = response.data.coord.lat;
     let longitude = response.data.coord.lon;
     let apiKeyHourly = `903ef20e2768a7e266ca3802f5b7359a`;
@@ -121,13 +123,17 @@ const Header = (props) => {
   function search() {
     let apiKey = `903ef20e2768a7e266ca3802f5b7359a`;
     let url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
-    axios.get(url).then(showWeather);
+    axios
+      .get(url)
+      .then(showWeather)
+      .catch(function (error) {
+        history.push("/citynotfound");
+      });
     setCity("");
   }
 
   function handleSubmit(event) {
     event.preventDefault();
-    history.push("/forecast");
     search();
   }
 
@@ -196,6 +202,9 @@ const Header = (props) => {
         </div>
         <div>
           <Route path="/" exact component={Hallo} />
+        </div>
+        <div>
+          <Route path="/citynotfound" exact component={Citynotfound} />
         </div>
         <div>
           <Route
