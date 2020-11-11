@@ -1,18 +1,16 @@
 .forecast-flax-wrapper-white-box-for-all {
-  justify-content: center;
-  display: flex;
-  flex-wrap: nowrap;
-  overflow-x: auto;
-  background: linear-gradient(180deg, transparent, hsla(0, 0%, 100%, 0.824));
+  background-color: rgba(255, 255, 255, 0.39);
+  flex-shrink: 0;
+  flex-basis: 90px;
+  margin: 0 5px;
+  border-radius: 5px;
 }
-
 
 .forecast-flax-wrapper {
   justify-content: center;
   display: flex;
   flex-wrap: nowrap;
   overflow-x: auto;
-  background: linear-gradient(180deg, transparent, hsla(0, 0%, 100%, 0.824));
 }
 
 .forecast-flax-wrapper::-webkit-scrollbar {
@@ -20,6 +18,7 @@
 }
 
 .forecast {
+  padding: 12px;
   width: 12%;
   flex: 3 0 auto;
 }

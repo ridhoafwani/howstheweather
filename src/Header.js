@@ -58,7 +58,7 @@ const Header = (props) => {
 
     setHourlyHour({
       hourlyset: jam,
-      ready: true
+      ready: true,
     });
   }
 
@@ -78,9 +78,8 @@ const Header = (props) => {
       .then(() => setReady(true));
   }
 
-  function showHourly(response){
+  function showHourly(response) {
     setHourly(response.data);
-    
   }
 
   function showWeather(response) {
@@ -98,7 +97,7 @@ const Header = (props) => {
     let latitude = response.data.coord.lat;
     let longitude = response.data.coord.lon;
     let apiKeyHourly = `903ef20e2768a7e266ca3802f5b7359a`;
-    let hourlyUrl = 'https://api.openweathermap.org/data/2.5/onecall';
+    let hourlyUrl = "https://api.openweathermap.org/data/2.5/onecall";
 
     //proses nambah hourly
     axios
@@ -106,7 +105,7 @@ const Header = (props) => {
         `${hourlyUrl}?lat=${latitude}&lon=${longitude}&exclude=current,minutely,daily&appid=${apiKeyHourly}&units=metric`
       )
       .then(showHourly);
-    
+
     //ini buat daily
 
     let apiKeyWeather = `903ef20e2768a7e266ca3802f5b7359a`;
@@ -117,7 +116,6 @@ const Header = (props) => {
       )
       .then(showForecast);
     hideVirtualKeyboard();
-    
   }
 
   function search() {
@@ -192,239 +190,245 @@ const Header = (props) => {
               />
             </form>
           </div>
-          {//tombol ganti suhu disini
+          {
+            //tombol ganti suhu disini
           }
         </div>
-        <Route path="/" exact component={Hallo} />
-        <Route
-          path="/forecast"
-          exact
-          render={(props) => (
-            <City
-              {...props}
-              city={weather.city}
-              description={weather.description}
-              dayOfWeek={day}
-              fullHour={hour.hourSet}
-            />
-          )}
-        />
-        <Route
-          path="/forecast"
-          exact
-          render={(props) => (
-            <Current
-              {...props}
-              temperature={weather.temp}
-              humidity={weather.humid}
-              wind={weather.wind}
-              icon={weather.icon}
-              unit={fahrenheit}
-            />
-          )}
-        />
-        {//Hourly disini
-        }
-        <div className="forecast-flax-wrapper forecast-scroll">
-          <Route
-            path="/forecast"
-            exact
-            render={(props) => (
-              <HourlyForecast
-              {...props}
-              temp={hourly.hourly[0].temp}
-              icon={hourly.hourly[0].weather[0].icon}
-              unit={fahrenheit}
-              hour={"now"}
-              />
-            )}
-          />
-
-          <Route
-            path="/forecast"
-            exact
-            render={(props) => (
-              <HourlyForecast
-              {...props}
-              temp={hourly.hourly[3].temp}
-              icon={hourly.hourly[3].weather[0].icon}
-              unit={fahrenheit}
-              hour={hourlyHour.hourlyset + 3}
-              />
-            )}
-          />
-
-          <Route
-            path="/forecast"
-            exact
-            render={(props) => (
-              <HourlyForecast
-              {...props}
-              temp={hourly.hourly[6].temp}
-              icon={hourly.hourly[6].weather[0].icon}
-              unit={fahrenheit}
-              hour={hourlyHour.hourlyset + 6}
-              />
-            )}
-          />
-
-          <Route
-            path="/forecast"
-            exact
-            render={(props) => (
-              <HourlyForecast
-              {...props}
-              temp={hourly.hourly[9].temp}
-              icon={hourly.hourly[9].weather[0].icon}
-              unit={fahrenheit}
-              hour={hourlyHour.hourlyset + 9}
-              />
-            )}
-          />
-
-          <Route
-            path="/forecast"
-            exact
-            render={(props) => (
-              <HourlyForecast
-              {...props}
-              temp={hourly.hourly[12].temp}
-              icon={hourly.hourly[12].weather[0].icon}
-              unit={fahrenheit}
-              hour={hourlyHour.hourlyset + 12}
-              />
-            )}
-          />    
-
-          <Route
-            path="/forecast"
-            exact
-            render={(props) => (
-              <HourlyForecast
-              {...props}
-              temp={hourly.hourly[15].temp}
-              icon={hourly.hourly[15].weather[0].icon}
-              unit={fahrenheit}
-              hour={hourlyHour.hourlyset + 15}
-              />
-            )}
-          />
-
-          <Route
-            path="/forecast"
-            exact
-            render={(props) => (
-              <HourlyForecast
-              {...props}
-              temp={hourly.hourly[18].temp}
-              icon={hourly.hourly[18].weather[0].icon}
-              unit={fahrenheit}
-              hour={hourlyHour.hourlyset + 18}
-              />
-            )}
-          />
-
+        <div>
+          <Route path="/" exact component={Hallo} />
         </div>
+        <div>
+          <Route
+            path="/forecast"
+            exact
+            render={(props) => (
+              <City
+                {...props}
+                city={weather.city}
+                description={weather.description}
+                dayOfWeek={day}
+                fullHour={hour.hourSet}
+              />
+            )}
+          />
+          <Route
+            path="/forecast"
+            exact
+            render={(props) => (
+              <Current
+                {...props}
+                temperature={weather.temp}
+                humidity={weather.humid}
+                wind={weather.wind}
+                icon={weather.icon}
+                unit={fahrenheit}
+              />
+            )}
+          />
+          {
+            //Hourly disini
+          }
+          <div className="forecast-flax-wrapper-white-box-for-all">
+            <div className="forecast-flax-wrapper forecast-scroll">
+              <Route
+                path="/forecast"
+                exact
+                render={(props) => (
+                  <HourlyForecast
+                    {...props}
+                    temp={hourly.hourly[0].temp}
+                    icon={hourly.hourly[0].weather[0].icon}
+                    unit={fahrenheit}
+                    hour={"Now"}
+                  />
+                )}
+              />
 
-        <div className="forecast-flax-wrapper forecast-scroll">
-          <Route
-            path="/forecast"
-            exact
-            render={(props) => (
-              <ForecastPreview
-                {...props}
-                max={forecast.daily[0].temp.max}
-                min={forecast.daily[0].temp.min}
-                icon={forecast.daily[0].weather[0].icon}
-                day={day}
-                unit={fahrenheit}
+              <Route
+                path="/forecast"
+                exact
+                render={(props) => (
+                  <HourlyForecast
+                    {...props}
+                    temp={hourly.hourly[3].temp}
+                    icon={hourly.hourly[3].weather[0].icon}
+                    unit={fahrenheit}
+                    hour={hourlyHour.hourlyset + 3}
+                  />
+                )}
               />
-            )}
-          />
-          <Route
-            path="/forecast"
-            exact
-            render={(props) => (
-              <ForecastPreview
-                {...props}
-                max={forecast.daily[1].temp.max}
-                min={forecast.daily[1].temp.min}
-                icon={forecast.daily[1].weather[0].icon}
-                day={day + 1}
-                unit={fahrenheit}
+
+              <Route
+                path="/forecast"
+                exact
+                render={(props) => (
+                  <HourlyForecast
+                    {...props}
+                    temp={hourly.hourly[6].temp}
+                    icon={hourly.hourly[6].weather[0].icon}
+                    unit={fahrenheit}
+                    hour={hourlyHour.hourlyset + 6}
+                  />
+                )}
               />
-            )}
-          />
-          <Route
-            path="/forecast"
-            exact
-            render={(props) => (
-              <ForecastPreview
-                {...props}
-                max={forecast.daily[2].temp.max}
-                min={forecast.daily[2].temp.min}
-                icon={forecast.daily[2].weather[0].icon}
-                day={day + 2}
-                unit={fahrenheit}
+              <Route
+                path="/forecast"
+                exact
+                render={(props) => (
+                  <HourlyForecast
+                    {...props}
+                    temp={hourly.hourly[9].temp}
+                    icon={hourly.hourly[9].weather[0].icon}
+                    unit={fahrenheit}
+                    hour={hourlyHour.hourlyset + 9}
+                  />
+                )}
               />
-            )}
-          />
-          <Route
-            path="/forecast"
-            exact
-            render={(props) => (
-              <ForecastPreview
-                {...props}
-                max={forecast.daily[3].temp.max}
-                min={forecast.daily[3].temp.min}
-                icon={forecast.daily[3].weather[0].icon}
-                day={day + 3}
-                unit={fahrenheit}
+
+              <Route
+                path="/forecast"
+                exact
+                render={(props) => (
+                  <HourlyForecast
+                    {...props}
+                    temp={hourly.hourly[12].temp}
+                    icon={hourly.hourly[12].weather[0].icon}
+                    unit={fahrenheit}
+                    hour={hourlyHour.hourlyset + 12}
+                  />
+                )}
               />
-            )}
-          />
-          <Route
-            path="/forecast"
-            exact
-            render={(props) => (
-              <ForecastPreview
-                {...props}
-                max={forecast.daily[4].temp.max}
-                min={forecast.daily[4].temp.min}
-                icon={forecast.daily[4].weather[0].icon}
-                day={day + 4}
-                unit={fahrenheit}
+
+              <Route
+                path="/forecast"
+                exact
+                render={(props) => (
+                  <HourlyForecast
+                    {...props}
+                    temp={hourly.hourly[15].temp}
+                    icon={hourly.hourly[15].weather[0].icon}
+                    unit={fahrenheit}
+                    hour={hourlyHour.hourlyset + 15}
+                  />
+                )}
               />
-            )}
-          />
-          <Route
-            path="/forecast"
-            exact
-            render={(props) => (
-              <ForecastPreview
-                {...props}
-                max={forecast.daily[5].temp.max}
-                min={forecast.daily[5].temp.min}
-                icon={forecast.daily[5].weather[0].icon}
-                day={day + 5}
-                unit={fahrenheit}
+
+              <Route
+                path="/forecast"
+                exact
+                render={(props) => (
+                  <HourlyForecast
+                    {...props}
+                    temp={hourly.hourly[18].temp}
+                    icon={hourly.hourly[18].weather[0].icon}
+                    unit={fahrenheit}
+                    hour={hourlyHour.hourlyset + 18}
+                  />
+                )}
               />
-            )}
-          />
-          <Route
-            path="/forecast"
-            exact
-            render={(props) => (
-              <ForecastPreview
-                {...props}
-                max={forecast.daily[6].temp.max}
-                min={forecast.daily[6].temp.min}
-                icon={forecast.daily[6].weather[0].icon}
-                day={day + 6}
-                unit={fahrenheit}
+            </div>
+            <div></div>
+            <div className="forecast-flax-wrapper forecast-scroll">
+              <Route
+                path="/forecast"
+                exact
+                render={(props) => (
+                  <ForecastPreview
+                    {...props}
+                    max={forecast.daily[0].temp.max}
+                    min={forecast.daily[0].temp.min}
+                    icon={forecast.daily[0].weather[0].icon}
+                    day={day}
+                    unit={fahrenheit}
+                  />
+                )}
               />
-            )}
-          />
+              <Route
+                path="/forecast"
+                exact
+                render={(props) => (
+                  <ForecastPreview
+                    {...props}
+                    max={forecast.daily[1].temp.max}
+                    min={forecast.daily[1].temp.min}
+                    icon={forecast.daily[1].weather[0].icon}
+                    day={day + 1}
+                    unit={fahrenheit}
+                  />
+                )}
+              />
+              <Route
+                path="/forecast"
+                exact
+                render={(props) => (
+                  <ForecastPreview
+                    {...props}
+                    max={forecast.daily[2].temp.max}
+                    min={forecast.daily[2].temp.min}
+                    icon={forecast.daily[2].weather[0].icon}
+                    day={day + 2}
+                    unit={fahrenheit}
+                  />
+                )}
+              />
+              <Route
+                path="/forecast"
+                exact
+                render={(props) => (
+                  <ForecastPreview
+                    {...props}
+                    max={forecast.daily[3].temp.max}
+                    min={forecast.daily[3].temp.min}
+                    icon={forecast.daily[3].weather[0].icon}
+                    day={day + 3}
+                    unit={fahrenheit}
+                  />
+                )}
+              />
+              <Route
+                path="/forecast"
+                exact
+                render={(props) => (
+                  <ForecastPreview
+                    {...props}
+                    max={forecast.daily[4].temp.max}
+                    min={forecast.daily[4].temp.min}
+                    icon={forecast.daily[4].weather[0].icon}
+                    day={day + 4}
+                    unit={fahrenheit}
+                  />
+                )}
+              />
+              <Route
+                path="/forecast"
+                exact
+                render={(props) => (
+                  <ForecastPreview
+                    {...props}
+                    max={forecast.daily[5].temp.max}
+                    min={forecast.daily[5].temp.min}
+                    icon={forecast.daily[5].weather[0].icon}
+                    day={day + 5}
+                    unit={fahrenheit}
+                  />
+                )}
+              />
+              <Route
+                path="/forecast"
+                exact
+                render={(props) => (
+                  <ForecastPreview
+                    {...props}
+                    max={forecast.daily[6].temp.max}
+                    min={forecast.daily[6].temp.min}
+                    icon={forecast.daily[6].weather[0].icon}
+                    day={day + 6}
+                    unit={fahrenheit}
+                  />
+                )}
+              />
+            </div>
+          </div>
         </div>
       </div>
     );
