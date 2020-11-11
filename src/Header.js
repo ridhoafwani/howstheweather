@@ -83,7 +83,6 @@ const Header = (props) => {
   }
 
   function showWeather(response) {
-    history.push("/forecast");
     setWeather({
       ready: true,
       city: response.data.name,
@@ -134,6 +133,7 @@ const Header = (props) => {
 
   function handleSubmit(event) {
     event.preventDefault();
+    history.push("/forecast");
     search();
   }
 
