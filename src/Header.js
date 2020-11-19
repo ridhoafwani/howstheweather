@@ -196,9 +196,24 @@ const Header = (props) => {
               />
             </form>
           </div>
-          {
-            //tombol ganti suhu disini
-          }
+          <div>
+            <a href="http://">
+              <span
+                className="conversion-c"
+                onClick={displayCelcius}
+                style={cSelected}
+              >
+                C
+              </span>
+              <span
+                className="conversion-f"
+                onClick={displayFahrenheit}
+                style={fSelected}
+              >
+                F
+              </span>
+            </a>
+          </div>
         </div>
         <div>
           <Route path="/" exact component={Hallo} />
