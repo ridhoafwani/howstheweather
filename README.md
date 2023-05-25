@@ -3,8 +3,11 @@ How's The Weather is a web application designed to provide users with accurate a
 
 ## Features
 `Real-Time Weather Forecasts`: How's The Weather delivers real-time weather forecasts, allowing users to stay informed about current weather conditions and plan their activities accordingly.
+
 `Dynamic and Interactive Interface`: Built with React.js, the application offers a dynamic and interactive user interface. Users can easily navigate through the application, view weather information, and interact with various features effortlessly.
+
 `Reliable and Accurate Data`: The integration of the OpenWeatherMap API ensures the reliability and accuracy of the weather data presented. Users can retrieve detailed information about temperature, humidity, wind speed, and other crucial weather parameters for their desired locations.
+
 
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
